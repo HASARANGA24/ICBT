@@ -1,0 +1,26 @@
+import networkx as nx
+import random
+import pandas as pd
+
+def link_prediction_common_neighbors(graph, u, v):
+    
+    if v in graph[u]:
+        return float('inf') 
+   
+    neighbors_u = set(graph[u])
+    neighbors_v = set(graph[v])
+    common_neighbors = neighbors_u.intersection(neighbors_v)
+   
+    score = len(common_neighbors)
+    return score
+
+graph = {
+    'A1': ['B', 'C', 'D','A', 'B', 'E'],
+    'B1': ['A', 'C'],
+    'C1': ['A', 'B', 'E'],
+    'D1': ['A'],
+    'E1': ['C','A', 'B', 'E']
+}
+
+score = link_prediction_common_neighbors(graph, 'A1', 'E1')
+print(f"Prediction Score between A and E : {score}")
