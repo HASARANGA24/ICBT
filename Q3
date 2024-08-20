@@ -9,6 +9,7 @@ def link_prediction_common_neighbors(graph, u, v):
    
     neighbors_u = set(graph[u])
     neighbors_v = set(graph[v])
+
     common_neighbors = neighbors_u.intersection(neighbors_v)
    
     score = len(common_neighbors)
